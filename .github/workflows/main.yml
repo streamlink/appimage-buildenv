@@ -1,0 +1,39 @@
+name: Build and deploy
+on:
+  push: {}
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - arch: x86_64
+            BASEIMAGE: "quay.io/pypa/manylinux2014_x86_64@sha256:521186079154ad6dfdc5e22dc460c576fd295cd1ab156e7d637f4a85e0b55427"
+            APPIMAGETOOL_URL: "https://github.com/AppImage/AppImageKit/releases/download/12/appimagetool-x86_64.AppImage"
+            APPIMAGETOOL_SHA256: d918b4df547b388ef253f3c9e7f6529ca81a885395c31f619d9aaf7030499a13
+          - arch: i686
+            BASEIMAGE: "quay.io/pypa/manylinux2014_i686@sha256:8c4cf95399d0c618d79d603ecb4b16d122c44e55b720e65ffa0f186189ee8c48"
+            APPIMAGETOOL_URL: "https://github.com/AppImage/AppImageKit/releases/download/12/appimagetool-i686.AppImage"
+            APPIMAGETOOL_SHA256: 3af6839ab6d236cd62ace9fbc2f86487f0bf104f521d82da6dea4dab8d3ce4ca
+          - arch: aarch64
+            BASEIMAGE: "quay.io/pypa/manylinux2014_aarch64@sha256:fa218b0f3946dba59801405ae5c4cf80e9cfaa18c71b491f2f912ae86ab1e8ff"
+            APPIMAGETOOL_URL: "https://github.com/AppImage/AppImageKit/releases/download/12/appimagetool-aarch64.AppImage"
+            APPIMAGETOOL_SHA256: c9d058310a4e04b9fbbd81340fff2b5fb44943a630b31881e321719f271bd41a
+    steps:
+      - uses: actions/checkout@v2
+      - name: docker qemu multi-arch
+        if: matrix.arch != 'x86_64'
+        run: |
+          sudo apt-get update -q -y
+          sudo apt-get -qq install -y binfmt-support qemu qemu-user-static
+          docker run --rm --privileged multiarch/qemu-user-static --reset --persistent yes
+      - name: build container
+        run: |
+          docker build \
+            -t streamlink-appimage-buildenv:${{ matrix.arch }} \
+            --build-arg "BASEIMAGE=${{ matrix.BASEIMAGE }}" \
+            --build-arg "APPIMAGETOOL_URL=${{ matrix.APPIMAGETOOL_URL }}" \
+            --build-arg "APPIMAGETOOL_SHA256=${{ matrix.APPIMAGETOOL_SHA256 }}" \
+            .
