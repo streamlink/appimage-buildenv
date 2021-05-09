@@ -28,18 +28,20 @@ jobs:
       - name: docker qemu multi-arch
         if: matrix.arch != 'x86_64'
         run: |
-          sudo apt-get update -q -y
-          sudo apt-get -qq install -y binfmt-support qemu qemu-user-static
           docker run --rm --privileged multiarch/qemu-user-static --reset --persistent yes
-      - name: build and push image
+      - name: build image
         run: |
-          TAG="ghcr.io/${GITHUB_REPOSITORY}-${{ matrix.arch }}:${GITHUB_SHA}"
-          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${GITHUB_ACTOR}" --password-stdin
           docker build \
-            --tag "${TAG}" \
+            --tag "${GITHUB_REPOSITORY}-${{ matrix.arch }}:${GITHUB_SHA}" \
             --build-arg "BASEIMAGE=${{ matrix.BASEIMAGE }}" \
             --build-arg "APPIMAGETOOL_URL=${{ matrix.APPIMAGETOOL_URL }}" \
             --build-arg "APPIMAGETOOL_SHA256=${{ matrix.APPIMAGETOOL_SHA256 }}" \
             .
-          docker push "${TAG}"
-
+      - name: push image
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${GITHUB_ACTOR}" --password-stdin
+          docker tag \
+            "${GITHUB_REPOSITORY}-${{ matrix.arch }}:${GITHUB_SHA}" \
+            "ghcr.io/${GITHUB_REPOSITORY}-${{ matrix.arch }}:${GITHUB_REF/#refs\/tags\//}"
+          docker push "ghcr.io/${GITHUB_REPOSITORY}-${{ matrix.arch }}:${GITHUB_REF/#refs\/tags\//}"
