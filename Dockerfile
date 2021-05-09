@@ -32,17 +32,11 @@ RUN set -x && mkdir /build && cd /build \
  && sed -i 's|\x41\x49\x02|\x00\x00\x00|' appimagetool.appimage \
  && chmod +x appimagetool.appimage \
  && ./appimagetool.appimage --appimage-extract \
- && echo $'#!/bin/sh\n/usr/local/bin/mksquashfs $(echo "$@" | sed -e "s/-mkfs-fixed-time 0//")\n'\
+ && echo $'#!/bin/sh\n/usr/local/bin/mksquashfs $(echo "$@" | sed -e "s/-mkfs-fixed-time 0//")\n' \
       > ./squashfs-root/usr/lib/appimagekit/mksquashfs \
- && find ./squashfs-root -exec touch --no-dereference --date=@0 '{}' '+' \
- && ARCH=$(uname -m) SOURCE_DATE_EPOCH=0 ./squashfs-root/AppRun \
-      --verbose \
-      --comp gzip \
-      --no-appstream \
-      ./squashfs-root \
-      ./appimagetool-repackaged.appimage \
- && install -Dm755 appimagetool-repackaged.appimage /usr/local/bin/appimagetool \
- && /usr/local/bin/appimagetool --appimage-version \
+ && mv squashfs-root /opt/appimagetool \
+ && ln -s /opt/appimagetool/AppRun /usr/local/bin/appimagetool \
+ && /usr/local/bin/appimagetool --version \
  && rm -rf /build
 
 # appimage library excludelist
