@@ -6,6 +6,8 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
     strategy:
       matrix:
         include:
@@ -29,11 +31,15 @@ jobs:
           sudo apt-get update -q -y
           sudo apt-get -qq install -y binfmt-support qemu qemu-user-static
           docker run --rm --privileged multiarch/qemu-user-static --reset --persistent yes
-      - name: build container
+      - name: build and push image
         run: |
+          TAG="ghcr.io/${GITHUB_REPOSITORY}-${{ matrix.arch }}:${GITHUB_SHA}"
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${GITHUB_ACTOR}" --password-stdin
           docker build \
-            -t streamlink-appimage-buildenv:${{ matrix.arch }} \
+            --tag "${TAG}" \
             --build-arg "BASEIMAGE=${{ matrix.BASEIMAGE }}" \
             --build-arg "APPIMAGETOOL_URL=${{ matrix.APPIMAGETOOL_URL }}" \
             --build-arg "APPIMAGETOOL_SHA256=${{ matrix.APPIMAGETOOL_SHA256 }}" \
             .
+          docker push "${TAG}"
+
