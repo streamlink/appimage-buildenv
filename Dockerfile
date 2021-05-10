@@ -9,7 +9,7 @@ RUN export SQUASHFSTOOLS_URL=https://github.com/plougher/squashfs-tools/archive/
  && sha256sum --check <<< "${SQUASHFSTOOLS_SHA256}  squashfstools.tar.gz" \
  && tar -C . --strip-components=1 -xzf squashfstools.tar.gz \
  && cd squashfs-tools \
- && yum install -q -y zlib-devel libattr-devel \
+ && yum install -q -y --setopt=timeout=5 --setopt=retries=1 zlib-devel libattr-devel \
  && make \
       GZIP_SUPPORT=1 \
       XZ_SUPPORT=0 \
