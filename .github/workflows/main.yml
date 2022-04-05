@@ -12,15 +12,15 @@ jobs:
       matrix:
         include:
           - arch: x86_64
-            BASEIMAGE: "quay.io/pypa/manylinux2014_x86_64@sha256:8c92ab3ac4ab6311b2d9fc5b032d439666074c7a204b75262b19a8986df8455b"
+            BASEIMAGE: "quay.io/pypa/manylinux2014_x86_64@sha256:9b463efac479efbcab6dec77eca28c5cfa0c5ef64f13ac184eb7117dc1f8edda"
             APPIMAGETOOL_URL: "https://github.com/AppImage/AppImageKit/releases/download/12/appimagetool-x86_64.AppImage"
             APPIMAGETOOL_SHA256: d918b4df547b388ef253f3c9e7f6529ca81a885395c31f619d9aaf7030499a13
           - arch: i686
-            BASEIMAGE: "quay.io/pypa/manylinux2014_i686@sha256:101b1fc11775dc50fa0c91fe66e305373e093031fd8efc87cffa3f70c020c537"
+            BASEIMAGE: "quay.io/pypa/manylinux2014_i686@sha256:27ed28f23685c28ebef4c7ea2f6bf24e705b270d35db79df944f37adaae9e783"
             APPIMAGETOOL_URL: "https://github.com/AppImage/AppImageKit/releases/download/12/appimagetool-i686.AppImage"
             APPIMAGETOOL_SHA256: 3af6839ab6d236cd62ace9fbc2f86487f0bf104f521d82da6dea4dab8d3ce4ca
           - arch: aarch64
-            BASEIMAGE: "quay.io/pypa/manylinux2014_aarch64@sha256:29a5134866f7f6394e77b5a33b2f7bca0c4a4d1d3b9244fa18d3db03b75d64ff"
+            BASEIMAGE: "quay.io/pypa/manylinux2014_aarch64@sha256:8fcd071d89dab8043aaf97360662d84833c2af54cb65bffcf05cd0ed2fda4b06"
             APPIMAGETOOL_URL: "https://github.com/AppImage/AppImageKit/releases/download/12/appimagetool-aarch64.AppImage"
             APPIMAGETOOL_SHA256: c9d058310a4e04b9fbbd81340fff2b5fb44943a630b31881e321719f271bd41a
     steps:
