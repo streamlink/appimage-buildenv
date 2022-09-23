@@ -24,7 +24,7 @@ jobs:
             APPIMAGETOOL_URL: "https://github.com/AppImage/AppImageKit/releases/download/12/appimagetool-aarch64.AppImage"
             APPIMAGETOOL_SHA256: c9d058310a4e04b9fbbd81340fff2b5fb44943a630b31881e321719f271bd41a
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: docker qemu multi-arch
         if: matrix.arch != 'x86_64'
         run: |
