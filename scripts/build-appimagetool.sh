@@ -4,7 +4,7 @@ set -exuo pipefail
 source "$(dirname -- "${BASH_SOURCE[0]}")/_utils.sh"
 
 
-case "$(uname -m)" in
+case "${AUDITWHEEL_ARCH}" in
   aarch64)
     APPIMAGETOOL_URL=https://github.com/AppImage/AppImageKit/releases/download/13/appimagetool-aarch64.AppImage
     APPIMAGETOOL_SHA256=334e77beb67fc1e71856c29d5f3f324ca77b0fde7a840fdd14bd3b88c25c341f
