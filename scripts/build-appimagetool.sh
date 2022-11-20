@@ -6,16 +6,16 @@ source "$(dirname -- "${BASH_SOURCE[0]}")/_utils.sh"
 
 case "$(uname -m)" in
   aarch64)
-    APPIMAGETOOL_URL=https://github.com/AppImage/AppImageKit/releases/download/12/appimagetool-aarch64.AppImage
-    APPIMAGETOOL_SHA256=c9d058310a4e04b9fbbd81340fff2b5fb44943a630b31881e321719f271bd41a
+    APPIMAGETOOL_URL=https://github.com/AppImage/AppImageKit/releases/download/13/appimagetool-aarch64.AppImage
+    APPIMAGETOOL_SHA256=334e77beb67fc1e71856c29d5f3f324ca77b0fde7a840fdd14bd3b88c25c341f
     ;;
   i686)
-    APPIMAGETOOL_URL=https://github.com/AppImage/AppImageKit/releases/download/12/appimagetool-i686.AppImage
-    APPIMAGETOOL_SHA256=3af6839ab6d236cd62ace9fbc2f86487f0bf104f521d82da6dea4dab8d3ce4ca
+    APPIMAGETOOL_URL=https://github.com/AppImage/AppImageKit/releases/download/13/appimagetool-i686.AppImage
+    APPIMAGETOOL_SHA256=104978205c888cb2ad42d1799e03d4621cb9a6027cfb375d069b394a82ff15d1
     ;;
   x86_64)
-    APPIMAGETOOL_URL=https://github.com/AppImage/AppImageKit/releases/download/12/appimagetool-x86_64.AppImage
-    APPIMAGETOOL_SHA256=d918b4df547b388ef253f3c9e7f6529ca81a885395c31f619d9aaf7030499a13
+    APPIMAGETOOL_URL=https://github.com/AppImage/AppImageKit/releases/download/13/appimagetool-x86_64.AppImage
+    APPIMAGETOOL_SHA256=df3baf5ca5facbecfc2f3fa6713c29ab9cefa8fd8c1eac5d283b79cab33e4acb
     ;;
   *)
     exit 1
@@ -35,7 +35,7 @@ build_appimagetool() {
 
   cat > ./squashfs-root/usr/lib/appimagekit/mksquashfs <<EOF
 #!/bin/sh
-/usr/local/bin/mksquashfs \$(echo "\$@" | sed -e "s/-mkfs-fixed-time 0//")
+/usr/local/bin/mksquashfs \$(echo "\$@" | sed -e "s/-mkfs-time 0//")
 EOF
   mv squashfs-root /opt/appimagetool
   ln -s /opt/appimagetool/AppRun /usr/local/bin/appimagetool
