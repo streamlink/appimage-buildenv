@@ -7,8 +7,8 @@ source "$(dirname -- "${BASH_SOURCE[0]}")/_utils.sh"
 ATTR_URL=https://download.savannah.gnu.org/releases/attr/attr-2.5.1.tar.xz
 ATTR_SHA256=db448a626f9313a1a970d636767316a8da32aede70518b8050fa0de7947adc32
 
-SQUASHFSTOOLS_URL=https://github.com/plougher/squashfs-tools/archive/c37bb4da4a5fa8c1cf114237ba364692dd522262.tar.gz
-SQUASHFSTOOLS_SHA256=2b26783a0d4a172b18be96e73e8458eba8d2bb3361f72dd13dbd1d7fbf6a5e9a
+SQUASHFSTOOLS_URL=https://github.com/plougher/squashfs-tools/archive/5c311deb597f533b1b9e7471ea03e35e06f0b39c.tar.gz
+SQUASHFSTOOLS_SHA256=9895666107c93d722f6a88bae18980b317c045e5bf8cbd3834997fe9e0032371
 
 
 build_attr() {
