@@ -51,6 +51,6 @@ check() {
 }
 
 
-build_appimagetool
-build_excludelist
+build build_appimagetool
+build build_excludelist
 check

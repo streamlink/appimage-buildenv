@@ -16,8 +16,9 @@ build_attr() {
 
   ./configure \
     --prefix=/usr/local \
+    --disable-dependency-tracking \
     --libexecdir=/usr/local/lib
-  make -j$(nproc)
+  make
   make install
 }
 
@@ -26,7 +27,6 @@ build_squashfstools() {
   pushd squashfs-tools
 
   make \
-    -j$(nproc) \
     GZIP_SUPPORT=1 \
     XZ_SUPPORT=0 \
     LZO_SUPPORT=0 \
@@ -51,9 +51,7 @@ check() {
 }
 
 
-build_attr
-cleanup
-prepare
-build_squashfstools
+build build_attr
+build build_squashfstools
 finalize
 check

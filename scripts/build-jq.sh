@@ -16,8 +16,9 @@ build_oniguruma() {
 
   ./configure \
     --prefix=/usr/local \
+    --disable-dependency-tracking \
     --enable-posix-api
-  make -j$(nproc)
+  make
   make install
 }
 
@@ -26,13 +27,15 @@ build_jq() {
 
   ./configure \
     --prefix=/usr/local \
+    --disable-dependency-tracking \
     --with-oniguruma=/usr/local
-  make -j$(nproc)
-  make prefix=/usr/local install
+  make
+  make install
 }
 
 finalize() {
   rm -f /usr/local/lib/lib{onig,jq}.{a,la}
+  rm -rf /usr/local/share/doc/jq
   rm -f /usr/local/share/man/man1/jq.1
 }
 
@@ -41,9 +44,7 @@ check() {
 }
 
 
-build_oniguruma
-cleanup
-prepare
-build_jq
+build build_oniguruma
+build build_jq
 finalize
 check

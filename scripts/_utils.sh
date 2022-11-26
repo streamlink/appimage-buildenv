@@ -2,6 +2,9 @@
 set -exuo pipefail
 
 
+export MAKEFLAGS=-j$(nproc)
+
+
 prepare() {
   mkdir /build
   pushd /build
@@ -35,5 +38,10 @@ download_and_extract_tarball() {
   extract_tarball "${file}" "${@}"
 }
 
-prepare
-trap cleanup EXIT
+build() {
+  local _build="${1}"
+  shift
+  prepare
+  "$_build" "${@}"
+  cleanup
+}
