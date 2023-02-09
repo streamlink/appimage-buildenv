@@ -19,7 +19,11 @@ download() {
   local url="${1}"
   local sha256="${2}"
   local file="${3}"
-  curl -fSL -o "${3}" "${1}"
+  curl -fgSL \
+    -A "$(curl -V | awk '{print $1 "/" $2; exit}')" \
+    --retry 3 --retry-delay 3 \
+    -o "${3}" \
+    "${1}"
   sha256sum --check <<< "${2}  ${3}"
 }
 
