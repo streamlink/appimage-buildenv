@@ -4,11 +4,11 @@ set -exuo pipefail
 source "$(dirname -- "${BASH_SOURCE[0]}")/_utils.sh"
 
 
-ATTR_URL=https://download.savannah.gnu.org/releases/attr/attr-2.5.1.tar.xz
+ATTR_URL=https://download-mirror.savannah.gnu.org/releases/attr/attr-2.5.1.tar.xz
 ATTR_SHA256=db448a626f9313a1a970d636767316a8da32aede70518b8050fa0de7947adc32
 
-SQUASHFSTOOLS_URL=https://github.com/plougher/squashfs-tools/archive/5c311deb597f533b1b9e7471ea03e35e06f0b39c.tar.gz
-SQUASHFSTOOLS_SHA256=9895666107c93d722f6a88bae18980b317c045e5bf8cbd3834997fe9e0032371
+SQUASHFSTOOLS_URL=https://github.com/plougher/squashfs-tools/archive/0f5666a3b250d7732211c188b58d11b36744c75e.tar.gz
+SQUASHFSTOOLS_SHA256=c3ee24dff1bb3f868a6bea834504e5c6c057ed95fee2d0d9f546683fe56d8391
 
 
 build_attr() {
@@ -44,6 +44,7 @@ finalize() {
   rm -f /usr/local/lib/libattr.{a,la}
   rm -f /usr/local/share/man/man1/{,get{,f},set{,f}}attr*.1
   rm -f /usr/local/share/man/man3/attr_*.3
+  rm -f /usr/local/share/man/man1/{{mk,un}squashfs,sqfs{cat,tar}}*.1
 }
 
 check() {
