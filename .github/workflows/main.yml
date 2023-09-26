@@ -19,7 +19,7 @@ jobs:
           - arch: x86_64
             BASEIMAGE: "quay.io/pypa/manylinux2014_x86_64@sha256:d32b13acaaf0258ebbdece34f07328738310ec1d4480bef25fa7178e7bd667b3"
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: docker qemu multi-arch
         if: matrix.arch != 'x86_64'
         run: |
