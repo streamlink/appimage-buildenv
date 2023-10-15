@@ -64,7 +64,6 @@ finalize() {
   rm -f /usr/local/share/man/man1/jq.1
 
   rm -rf /root/.cache
-  find
 }
 
 check() {
