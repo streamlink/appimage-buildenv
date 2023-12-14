@@ -4,7 +4,8 @@ set -exuo pipefail
 source "$(dirname -- "${BASH_SOURCE[0]}")/_utils.sh"
 
 
-ATTR_URL=https://download-mirror.savannah.gnu.org/releases/attr/attr-2.5.1.tar.xz
+# download{,-mirror}.savannah.gnu.org is once again offline, so use a static, but reliable mirror instead
+ATTR_URL=https://mirror.netcologne.de/savannah/attr/attr-2.5.1.tar.xz
 ATTR_SHA256=db448a626f9313a1a970d636767316a8da32aede70518b8050fa0de7947adc32
 
 SQUASHFSTOOLS_URL=https://github.com/plougher/squashfs-tools/archive/refs/tags/4.6.1.tar.gz
