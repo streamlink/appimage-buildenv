@@ -13,11 +13,11 @@ jobs:
       matrix:
         include:
           - arch: aarch64
-            BASEIMAGE: "quay.io/pypa/manylinux2014_aarch64@sha256:a2853ef3d7a42c5aa7a9f40590143ff32f3baf8775e2784ef4933df10f7ef4b5"
+            BASEIMAGE: "quay.io/pypa/manylinux2014_aarch64@sha256:d21503dd99cdebfaf7297b0c0b0ea99e9a8950b8567b7baf076d1004725e673e"
           - arch: i686
-            BASEIMAGE: "quay.io/pypa/manylinux2014_i686@sha256:fb0e87528ffcf6be3b1c15164cd825f6876150ffe5b6c180d7d9d68dd41bcb06"
+            BASEIMAGE: "quay.io/pypa/manylinux2014_i686@sha256:bdce2b0761197eca2b7d11bc74b290bc04cbc1fabae655f18a87e6f437e248e7"
           - arch: x86_64
-            BASEIMAGE: "quay.io/pypa/manylinux2014_x86_64@sha256:1d768830101ec1bc55011887861fe927dff12382a2faf72afed6534a177de9d6"
+            BASEIMAGE: "quay.io/pypa/manylinux2014_x86_64@sha256:81215fea015c9ecedc6b3cb2dd3bc4d2293235572aa77eab81d3c3a541624785"
     steps:
       - uses: actions/checkout@v4
       - name: docker qemu multi-arch
