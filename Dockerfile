@@ -1,4 +1,4 @@
-ARG BASEIMAGE=centos:7
+ARG BASEIMAGE=almalinux:8
 FROM $BASEIMAGE AS base
 
 COPY ./scripts /scripts

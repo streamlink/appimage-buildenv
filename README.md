@@ -8,7 +8,7 @@ Docker image build config for building [appimages](https://appimage.org/) for [S
 - [`ghcr.io/streamlink/appimage-buildenv-x86_64`](https://github.com/streamlink/appimage-buildenv/pkgs/container/appimage-buildenv-x86_64)
 - [`ghcr.io/streamlink/appimage-buildenv-aarch64`](https://github.com/streamlink/appimage-buildenv/pkgs/container/appimage-buildenv-aarch64)
 
-Based on the [`pypa/manylinux`](https://github.com/pypa/manylinux) images, which are based on the official [`centos:7`](https://hub.docker.com/_/centos) images.
+Based on the [`pypa/manylinux`](https://github.com/pypa/manylinux) images (`manylinux_2_28`), which are based on the official [`almalinux:8`](https://hub.docker.com/_/almalinux) images.
 
 ### Contents
 
