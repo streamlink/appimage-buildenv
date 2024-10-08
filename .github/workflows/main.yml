@@ -14,8 +14,6 @@ jobs:
         include:
           - arch: aarch64
             BASEIMAGE: "quay.io/pypa/manylinux2014_aarch64@sha256:5e167d48f9d07b9ce59b2d48e0a9af33052515fb93b1733ab28fee2bb475f197"
-          - arch: i686
-            BASEIMAGE: "quay.io/pypa/manylinux2014_i686@sha256:2010d3f36e623d6e24e2ad9cce665d0bc9789dafde56d21b0fdf023a95ab5ebe"
           - arch: x86_64
             BASEIMAGE: "quay.io/pypa/manylinux2014_x86_64@sha256:2ee3e1329ba3e85d783a4128b755803a2c7f7a42a5454464cc325df29e254b9e"
     steps:
