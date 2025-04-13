@@ -13,10 +13,10 @@ jobs:
         include:
           - arch: aarch64
             runs-on: ubuntu-24.04-arm
-            BASEIMAGE: "quay.io/pypa/manylinux_2_28_aarch64@sha256:3077ac6743a462fc480c109b0bfe621385b4f31bd14e3f3f90208fae49a46a8d"
+            BASEIMAGE: "quay.io/pypa/manylinux_2_28_aarch64@sha256:13b39b793fb7084044d4bb873f55ff1945a6592557705e9c59e0ed9f9a2e2273"
           - arch: x86_64
             runs-on: ubuntu-24.04
-            BASEIMAGE: "quay.io/pypa/manylinux_2_28_x86_64@sha256:639e55a81afa7cb6f423a04d290900bba65062845de72c3a1d7a69171a61f63a"
+            BASEIMAGE: "quay.io/pypa/manylinux_2_28_x86_64@sha256:1ba0f6fbc246395fbb103262409c0e81637eb617fb362920c79294a1040a2442"
     runs-on: ${{ matrix.runs-on }}
     steps:
       - uses: actions/checkout@v4
