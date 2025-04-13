@@ -34,7 +34,7 @@ build_jq() {
 }
 
 install_yq() {
-  local python=/opt/python/cp311-cp311/bin/python
+  local python=/opt/python/cp313-cp313/bin/python
   local venv=/usr/local/lib/yq
 
   export PYTHONDONTWRITEBYTECODE=1
