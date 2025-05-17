@@ -2,7 +2,8 @@
 set -exuo pipefail
 
 
-export MAKEFLAGS=-j$(nproc)
+MAKEFLAGS=-j$(nproc)
+export MAKEFLAGS
 
 
 prepare() {
@@ -16,9 +17,11 @@ cleanup() {
 }
 
 download() {
-  local url="${1}"
-  local sha256="${2}"
-  local file="${3}"
+  local url sha256 file
+  url="${1}"
+  sha256="${2}"
+  file="${3}"
+
   curl -fgSL \
     -A "$(curl -V | awk '{print $1 "/" $2; exit}')" \
     --retry 3 --retry-delay 3 \
@@ -34,9 +37,10 @@ extract_tarball() {
 }
 
 download_and_extract_tarball() {
-  local url="${1}"
-  local sha256="${2}"
-  local file="$(basename -- "${url}")"
+  local url sha256 file
+  url="${1}"
+  sha256="${2}"
+  file="$(basename -- "${url}")"
   shift 2
   download "${url}" "${sha256}" "${file}"
   extract_tarball "${file}" "${@}"
