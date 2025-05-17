@@ -6,16 +6,6 @@ MAKEFLAGS=-j$(nproc)
 export MAKEFLAGS
 
 
-prepare() {
-  mkdir /build
-  pushd /build
-}
-
-cleanup() {
-  popd
-  rm -rf /build
-}
-
 download() {
   local url sha256 file
   url="${1}"
@@ -47,9 +37,15 @@ download_and_extract_tarball() {
 }
 
 build() {
-  local _build="${1}"
+  local dir build_command
+  build_command="${1}"
   shift
-  prepare
-  "$_build" "${@}"
-  cleanup
+
+  dir=$(mktemp -d || exit 255)
+  pushd "${dir}"
+
+  "$build_command" "${@}"
+
+  popd
+  rm -rf "${dir}"
 }
