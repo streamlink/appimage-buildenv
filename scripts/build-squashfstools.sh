@@ -5,8 +5,8 @@ source "$(dirname -- "${BASH_SOURCE[0]}")/_utils.sh"
 
 
 # download{,-mirror}.savannah.gnu.org is once again offline, so use a static, but reliable mirror instead
-ATTR_URL=https://mirror.netcologne.de/savannah/attr/attr-2.5.1.tar.xz
-ATTR_SHA256=db448a626f9313a1a970d636767316a8da32aede70518b8050fa0de7947adc32
+ATTR_URL=https://mirror.netcologne.de/savannah/attr/attr-2.5.2.tar.xz
+ATTR_SHA256=f2e97b0ab7ce293681ab701915766190d607a1dba7fae8a718138150b700a70b
 
 ZSTD_URL=https://github.com/facebook/zstd/releases/download/v1.5.7/zstd-1.5.7.tar.gz
 ZSTD_SHA256=eb33e51f49a15e023950cd7825ca74a4a2b43db8354825ac24fc1b7ee09e6fa3
