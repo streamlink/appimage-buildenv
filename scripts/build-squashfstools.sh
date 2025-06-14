@@ -11,8 +11,8 @@ ATTR_SHA256=f2e97b0ab7ce293681ab701915766190d607a1dba7fae8a718138150b700a70b
 ZSTD_URL=https://github.com/facebook/zstd/releases/download/v1.5.7/zstd-1.5.7.tar.gz
 ZSTD_SHA256=eb33e51f49a15e023950cd7825ca74a4a2b43db8354825ac24fc1b7ee09e6fa3
 
-SQUASHFSTOOLS_URL=https://github.com/plougher/squashfs-tools/archive/refs/tags/4.6.1.tar.gz
-SQUASHFSTOOLS_SHA256=94201754b36121a9f022a190c75f718441df15402df32c2b520ca331a107511c
+SQUASHFSTOOLS_URL=https://github.com/plougher/squashfs-tools/releases/download/4.7/squashfs-tools-4.7.tar.gz
+SQUASHFSTOOLS_SHA256=f1605ef720aa0b23939a49ef4491f6e734333ccc4bda4324d330da647e105328
 
 
 build_attr() {
@@ -47,25 +47,33 @@ build_squashfstools() {
   download_and_extract_tarball "${SQUASHFSTOOLS_URL}" "${SQUASHFSTOOLS_SHA256}" -z --strip-components=1
   pushd squashfs-tools
 
-  make \
-    GZIP_SUPPORT=1 \
-    XZ_SUPPORT=0 \
-    LZO_SUPPORT=0 \
-    LZMA_XZ_SUPPORT=0 \
-    LZ4_SUPPORT=0 \
-    ZSTD_SUPPORT=1 \
+  local makeoptions
+  makeoptions=(
+    CONFIG=1
+    GZIP_SUPPORT=0
+    XZ_SUPPORT=0
+    LZO_SUPPORT=0
+    LZ4_SUPPORT=0
+    ZSTD_SUPPORT=1
+    COMP_DEFAULT=zstd
     XATTR_SUPPORT=1
-  make install \
+    USE_PREBUILT_MANPAGES=y
+    SMALL_READER_THREADS=4
+    BLOCK_READER_THREADS=4
     INSTALL_PREFIX=/usr/local
+  )
+
+  make "${makeoptions[@]}"
+  make "${makeoptions[@]}" install
 
   popd
 }
 
 finalize() {
   rm -f /usr/local/lib/libattr.{a,la}
-  rm -f /usr/local/share/man/man1/{,get{,f},set{,f}}attr*.1
-  rm -f /usr/local/share/man/man3/attr_*.3
-  rm -f /usr/local/share/man/man1/{{mk,un}squashfs,sqfs{cat,tar}}*.1
+  rm -f /usr/local/share/doc/attr/CHANGES
+  rm -rf /usr/local/man
+  rm -rf /usr/local/share/man/man{1,3}
 }
 
 check() {
