@@ -19,7 +19,7 @@ build_patchelf() {
 
 finalize() {
   rm -rf /usr/local/share/doc/patchelf
-  rm -f /usr/local/share/man/man1/patchelf.1
+  rm -rf /usr/local/share/man/man1
 }
 
 check() {

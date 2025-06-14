@@ -61,7 +61,7 @@ EOF
 finalize() {
   rm -f /usr/local/lib/lib{onig,jq}.{a,la}
   rm -rf /usr/local/share/doc/jq
-  rm -f /usr/local/share/man/man1/jq.1
+  rm -rf /usr/local/share/man/man1
 
   rm -rf /root/.cache
 }
