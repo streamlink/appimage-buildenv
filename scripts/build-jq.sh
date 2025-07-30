@@ -15,8 +15,7 @@ build_jq() {
     --prefix=/usr/local \
     --disable-docs \
     --with-oniguruma=builtin \
-    --enable-static \
-    --enable-all-static
+    LDFLAGS="${LDFLAGS:-} -Wl,-rpath -Wl,/usr/local/lib"
   make
   make install
 }
