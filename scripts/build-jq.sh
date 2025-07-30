@@ -35,7 +35,7 @@ install_yq() {
     --require-hashes \
     -r /dev/stdin <<EOF
 yq==3.4.3 --hash=sha256:547e34bc3caacce83665fd3429bf7c85f8e8b6b9aaee3f953db1ad716ff3434d
-pyyaml==6.0.2 --hash=sha256:70b189594dbe54f75ab3a1acec5f1e3faa7e8cf2f1e08d9b561cb41b845f69d5
+pyyaml==6.0.2 --hash=sha256:d584d9ec91ad65861cc08d42e834324ef890a082e591037abe114850ff7bbc3e
 tomlkit==0.13.3 --hash=sha256:c89c649d79ee40629a9fda55f8ace8c6a1b42deb912b2a8fd8d942ddadb606b0
 xmltodict==0.14.2 --hash=sha256:20cc7d723ed729276e808f26fb6b3599f786cbc37e06c65e192ba77c40f20aac
 argcomplete==3.6.2 --hash=sha256:65b3133a29ad53fb42c48cf5114752c7ab66c1c38544fdf6460f450c09b42591
