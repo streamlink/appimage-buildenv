@@ -4,31 +4,19 @@ set -exuo pipefail
 source "$(dirname -- "${BASH_SOURCE[0]}")/_utils.sh"
 
 
-ONIGURUMA_URL=https://github.com/kkos/oniguruma/releases/download/v6.9.8/onig-6.9.8.tar.gz
-ONIGURUMA_SHA256=28cd62c1464623c7910565fb1ccaaa0104b2fe8b12bcd646e81f73b47535213e
+JQ_URL=https://github.com/jqlang/jq/releases/download/jq-1.8.1/jq-1.8.1.tar.gz
+JQ_SHA256=2be64e7129cecb11d5906290eba10af694fb9e3e7f9fc208a311dc33ca837eb0
 
-JQ_URL=https://github.com/stedolan/jq/releases/download/jq-1.6/jq-1.6.tar.gz
-JQ_SHA256=5de8c8e29aaa3fb9cc6b47bb27299f271354ebb72514e3accadc7d38b5bbaa72
-
-
-build_oniguruma() {
-  download_and_extract_tarball "${ONIGURUMA_URL}" "${ONIGURUMA_SHA256}" -z --strip-components=1
-
-  ./configure \
-    --prefix=/usr/local \
-    --disable-dependency-tracking \
-    --enable-posix-api
-  make
-  make install
-}
 
 build_jq() {
   download_and_extract_tarball "${JQ_URL}" "${JQ_SHA256}" -z --strip-components=1
 
   ./configure \
     --prefix=/usr/local \
-    --disable-dependency-tracking \
-    --with-oniguruma=/usr/local
+    --disable-docs \
+    --with-oniguruma=builtin \
+    --enable-static \
+    --enable-all-static
   make
   make install
 }
@@ -46,11 +34,11 @@ install_yq() {
     --no-compile \
     --require-hashes \
     -r /dev/stdin <<EOF
-yq==3.2.3 --hash=sha256:b50c91894dad9894d1d36ea77d5722d5495cac9482d2351e55089360a90709ae
-pyyaml==6.0.1 --hash=sha256:bfdf460b1736c775f2ba9f6a92bca30bc2095067b8a9d77876d1fad6cc3b4a43
-tomlkit==0.12.1 --hash=sha256:712cbd236609acc6a3e2e97253dfc52d4c2082982a88f61b640ecf0817eab899
-xmltodict==0.13.0 --hash=sha256:aa89e8fd76320154a40d19a0df04a4695fb9dc5ba977cbb68ab3e4eb225e7852
-argcomplete==3.1.2 --hash=sha256:d97c036d12a752d1079f190bc1521c545b941fda89ad85d15afa909b4d1b9a99
+yq==3.4.3 --hash=sha256:547e34bc3caacce83665fd3429bf7c85f8e8b6b9aaee3f953db1ad716ff3434d
+pyyaml==6.0.2 --hash=sha256:70b189594dbe54f75ab3a1acec5f1e3faa7e8cf2f1e08d9b561cb41b845f69d5
+tomlkit==0.13.3 --hash=sha256:c89c649d79ee40629a9fda55f8ace8c6a1b42deb912b2a8fd8d942ddadb606b0
+xmltodict==0.14.2 --hash=sha256:20cc7d723ed729276e808f26fb6b3599f786cbc37e06c65e192ba77c40f20aac
+argcomplete==3.6.2 --hash=sha256:65b3133a29ad53fb42c48cf5114752c7ab66c1c38544fdf6460f450c09b42591
 EOF
 
   ln -s "${venv}/bin/yq" /usr/local/bin/yq
@@ -71,7 +59,6 @@ check() {
 }
 
 
-build build_oniguruma
 build build_jq
 install_yq
 finalize
