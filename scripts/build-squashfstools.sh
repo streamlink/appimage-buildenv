@@ -29,7 +29,6 @@ build_attr() {
 build_zstd() {
   download_and_extract_tarball "${ZSTD_URL}" "${ZSTD_SHA256}" -z --strip-components=1
 
-  export PYTHONDONTWRITEBYTECODE=1
   cmake \
     -S build/cmake \
     -B build \

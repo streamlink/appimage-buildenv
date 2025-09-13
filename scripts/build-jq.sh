@@ -24,7 +24,6 @@ install_yq() {
   local python=/opt/python/cp313-cp313/bin/python
   local venv=/usr/local/lib/yq
 
-  export PYTHONDONTWRITEBYTECODE=1
   "${python}" -B -m venv --without-pip "${venv}"
   "${python}" -B -m pip \
     --python "${venv}/bin/python" \

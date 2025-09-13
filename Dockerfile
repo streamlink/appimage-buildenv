@@ -1,6 +1,8 @@
 ARG BASEIMAGE=almalinux:8
 FROM $BASEIMAGE AS base
 
+ENV PYTHONDONTWRITEBYTECODE=1
+
 COPY ./scripts /scripts
 
 RUN /scripts/build-patchelf.sh
