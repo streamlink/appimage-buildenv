@@ -8,12 +8,8 @@ RUN dnf install -y --setopt=install_weak_deps=False \
  && dnf clean all \
  && rm -rf /var/cache/dnf
 
-COPY ./scripts /scripts
-
-RUN /scripts/build-patchelf.sh
-RUN /scripts/build-jq.sh
-RUN /scripts/build-squashfstools.sh
-RUN /scripts/get-appimage-runtime.sh
-RUN /scripts/build-zsync2.sh
-
-RUN rm -rf /scripts
+RUN --mount=type=bind,source=./scripts,target=/scripts /scripts/build-patchelf.sh
+RUN --mount=type=bind,source=./scripts,target=/scripts /scripts/build-jq.sh
+RUN --mount=type=bind,source=./scripts,target=/scripts /scripts/build-squashfstools.sh
+RUN --mount=type=bind,source=./scripts,target=/scripts /scripts/get-appimage-runtime.sh
+RUN --mount=type=bind,source=./scripts,target=/scripts /scripts/build-zsync2.sh
