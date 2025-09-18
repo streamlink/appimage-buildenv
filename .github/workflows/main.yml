@@ -20,6 +20,9 @@ jobs:
     runs-on: ${{ matrix.runs-on }}
     steps:
       - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+        with:
+          buildkitd-config: .github/buildkit.toml
       - name: build image
         run: |
           docker build \
