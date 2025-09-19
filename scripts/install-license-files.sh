@@ -87,6 +87,11 @@ copy_licenses() {
   done
 }
 
+install_other() {
+  install -vDm644 /opt/_internal/mpdecimal-4/share/doc/mpdecimal/COPYRIGHT.txt "${OUTPUT}/usr/share/doc/mpdecimal/COPYRIGHT.txt"
+}
+
 
 find_libs
 copy_licenses
+install_other
