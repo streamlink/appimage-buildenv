@@ -25,7 +25,7 @@ FROM dnf_deps AS build_zsync2
 RUN --mount=type=bind,source=./scripts,target=/scripts /scripts/build-zsync2.sh
 
 FROM base
-COPY --from=build_patchelf /usr/local /usr/local/
+COPY --from=build_patchelf /usr/local/bin/patchelf /usr/local/bin/patchelf
 COPY --from=build_jq /usr/local /usr/local/
 COPY --from=build_squashfstools /usr/local /usr/local/
 COPY --from=get_appimage_runtime /usr/local /usr/local/
