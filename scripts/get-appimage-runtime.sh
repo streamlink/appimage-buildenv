@@ -18,8 +18,8 @@ case "${AUDITWHEEL_ARCH}" in
     ;;
 esac
 
-EXCLUDELIST_URL=https://raw.githubusercontent.com/AppImage/pkg2appimage/d61672ff4f90cf793a0bee7b056186fcdeb9b510/excludelist
-EXCLUDELIST_SHA256=1a23ff720850b0c36d604663001b0ad9560b85ad51e0f3aac452714a9b67e042
+EXCLUDELIST_URL=https://raw.githubusercontent.com/AppImageCommunity/pkg2appimage/19e30b276ffedf4d3b4b56bc6320f463625a74f8/excludelist
+EXCLUDELIST_SHA256=50db0f894f34b169c47a5cbc0c17dbab61e9edebca5bc8269a1e6ac1bf4bdad9
 
 
 get_type2_runtime() {
