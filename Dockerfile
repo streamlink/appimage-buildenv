@@ -7,9 +7,7 @@ ENV PYTHONDONTWRITEBYTECODE=1
 
 FROM base AS dnf_deps
 RUN dnf install -y --setopt=install_weak_deps=False \
-      openssl-devel \
- && dnf clean all \
- && rm -rf /var/cache/dnf
+      openssl-devel
 
 FROM base AS build_patchelf
 RUN --mount=type=bind,source=./scripts,target=/scripts /scripts/build-patchelf.sh
@@ -26,7 +24,7 @@ RUN --mount=type=bind,source=./scripts,target=/scripts /scripts/get-appimage-run
 FROM dnf_deps AS build_zsync2
 RUN --mount=type=bind,source=./scripts,target=/scripts /scripts/build-zsync2.sh
 
-FROM base AS install_license_files
+FROM dnf_deps AS install_license_files
 ARG PYTHON_VERSION
 COPY --from=get_appimage_runtime /usr/local/share/appimage/excludelist /usr/local/share/appimage/excludelist
 RUN --mount=type=bind,source=./scripts,target=/scripts /scripts/install-license-files.sh \
