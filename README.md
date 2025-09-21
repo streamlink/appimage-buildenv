@@ -12,6 +12,8 @@ Based on the [`pypa/manylinux`](https://github.com/pypa/manylinux) images (`many
 
 ### Contents
 
-- updated [`squashfs-tools`](https://github.com/plougher/squashfs-tools) with support for reproducible builds
-- prebuilt [`appimagetool`](https://github.com/AppImage/AppImageKit) with applied fixes
-- appimage library [`excludelist`](https://github.com/AppImage/pkg2appimage)
+- [`patchelf`](https://github.com/NixOS/patchelf)
+- [`jq`](https://github.com/jqlang/jq) + [`yq`](https://github.com/kislyuk/yq)
+- [`squashfs-tools`](https://github.com/plougher/squashfs-tools) with [`zstd`](https://github.com/facebook/zstd) support
+- [`AppImage type2 runtime`](https://github.com/streamlink/appimage-type2-runtime)
+- [`zsync2`](https://github.com/AppImageCommunity/zsync2)
