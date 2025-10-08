@@ -14,11 +14,11 @@ jobs:
           - arch: aarch64
             runs-on: ubuntu-24.04-arm
             BASEIMAGE: "quay.io/pypa/manylinux_2_28_aarch64@sha256:d9c1b6e58f1e5ec3b603a36aa61c44a972010709248c7c5bc1a3477af34a0e0d"
-            PYTHON_VERSION: "3.13"
+            PYTHON_VERSION: "3.14"
           - arch: x86_64
             runs-on: ubuntu-24.04
             BASEIMAGE: "quay.io/pypa/manylinux_2_28_x86_64@sha256:ecc0629e3ced461c6a7999a292834a546ae489119696be7beaceccbde99abdd9"
-            PYTHON_VERSION: "3.13"
+            PYTHON_VERSION: "3.14"
     runs-on: ${{ matrix.runs-on }}
     steps:
       - uses: actions/checkout@v4
