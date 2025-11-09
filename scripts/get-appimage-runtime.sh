@@ -6,12 +6,12 @@ source "$(dirname -- "${BASH_SOURCE[0]}")/_utils.sh"
 
 case "${AUDITWHEEL_ARCH}" in
   aarch64)
-    TYPE2_RUNTIME_URL=https://github.com/streamlink/appimage-type2-runtime/releases/download/20250523-1/runtime-aarch64
-    TYPE2_RUNTIME_SHA256=2a4c3e0f0ee14133eb5c03dd6962666c9cbb6dcce51a5b3f2abf8b0619bf986c
+    TYPE2_RUNTIME_URL=https://github.com/streamlink/appimage-type2-runtime/releases/download/20251109-1/runtime-aarch64
+    TYPE2_RUNTIME_SHA256=d0b1d4114e7cc74d6780b05dded24256d6865c840c9b4ae773f2a0c40dd8fd49
     ;;
   x86_64)
-    TYPE2_RUNTIME_URL=https://github.com/streamlink/appimage-type2-runtime/releases/download/20250523-1/runtime-x86_64
-    TYPE2_RUNTIME_SHA256=10d6221e674b3667b6a014b81f67e7f24cbd7584cb936059e14ad5e4df1cd676
+    TYPE2_RUNTIME_URL=https://github.com/streamlink/appimage-type2-runtime/releases/download/20251109-1/runtime-x86_64
+    TYPE2_RUNTIME_SHA256=81b3fb025e05fe5f35420d65af6e268da2dc78d63c1f3651539c7f33759dc8f6
     ;;
   *)
     exit 1
