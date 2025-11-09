@@ -11,8 +11,8 @@ ATTR_SHA256=f2e97b0ab7ce293681ab701915766190d607a1dba7fae8a718138150b700a70b
 ZSTD_URL=https://github.com/facebook/zstd/releases/download/v1.5.7/zstd-1.5.7.tar.gz
 ZSTD_SHA256=eb33e51f49a15e023950cd7825ca74a4a2b43db8354825ac24fc1b7ee09e6fa3
 
-SQUASHFSTOOLS_URL=https://github.com/plougher/squashfs-tools/releases/download/4.7/squashfs-tools-4.7.tar.gz
-SQUASHFSTOOLS_SHA256=f1605ef720aa0b23939a49ef4491f6e734333ccc4bda4324d330da647e105328
+SQUASHFSTOOLS_URL=https://github.com/plougher/squashfs-tools/releases/download/4.7.3/squashfs-tools-4.7.3.tar.gz
+SQUASHFSTOOLS_SHA256=fa154acd4008cd9976dc94213e2ecfe3566dcae304480c4c04cf1c4651d5d200
 
 
 build_attr() {
