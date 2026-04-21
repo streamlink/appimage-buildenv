@@ -4,13 +4,15 @@ set -exuo pipefail
 source "$(dirname -- "${BASH_SOURCE[0]}")/_utils.sh"
 
 
-JQ_URL=https://github.com/jqlang/jq/releases/download/jq-1.8.1/jq-1.8.1.tar.gz
-JQ_SHA256=2be64e7129cecb11d5906290eba10af694fb9e3e7f9fc208a311dc33ca837eb0
+JQ_REPO=https://github.com/jqlang/jq.git
+JQ_REVISION=fb59f1491058d58bdc3e8dd28f1773d1ac690a1f
 
 
 build_jq() {
-  download_and_extract_tarball "${JQ_URL}" "${JQ_SHA256}" -z --strip-components=1
+  git clone --depth=1 --revision="${JQ_REVISION}" "${JQ_REPO}" .
+  git submodule update --init --recursive --depth=1 --single-branch
 
+  autoreconf -i
   ./configure \
     --prefix=/usr/local \
     --disable-docs \
