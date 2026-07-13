@@ -13,6 +13,7 @@ on:
 
 jobs:
   ghcr-cleanup:
+    if: github.repository == 'streamlink/appimage-buildenv'
     runs-on: ubuntu-latest
     permissions:
       packages: write
@@ -20,4 +21,6 @@ jobs:
       - uses: dataaxiom/ghcr-cleanup-action@d52806a0dc70b430571a37da1fde39733ffd640f # v1.2.2
         with:
           dry-run: ${{ (github.event_name == 'workflow_dispatch') && fromJSON(github.event.inputs.dry-run) }}
+          owner: streamlink
+          package: appimage-buildenv-x86_64,appimage-buildenv-aarch64,appimage-buildenv-i686
           older-than: 1 year
