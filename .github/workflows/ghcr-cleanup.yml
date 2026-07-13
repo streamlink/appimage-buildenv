@@ -23,4 +23,5 @@ jobs:
           dry-run: ${{ (github.event_name == 'workflow_dispatch') && fromJSON(github.event.inputs.dry-run) }}
           owner: streamlink
           package: appimage-buildenv-x86_64,appimage-buildenv-aarch64,appimage-buildenv-i686
+          delete-tags: "*"
           older-than: 1 year
