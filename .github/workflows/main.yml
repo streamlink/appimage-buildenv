@@ -13,11 +13,11 @@ jobs:
         include:
           - arch: aarch64
             runs-on: ubuntu-24.04-arm
-            BASEIMAGE: "quay.io/pypa/manylinux_2_28_aarch64@sha256:d2380d927972b39b86041530b86c02c4307c19605afb4fe5ddf89e54f81e3bb6"
+            BASEIMAGE: "quay.io/pypa/manylinux_2_28_aarch64@sha256:f766b402889e40f439e7a3ee5788eef1aa3ef399d0110107d27419fa2ba9d905"
             PYTHON_VERSION: "3.14"
           - arch: x86_64
             runs-on: ubuntu-24.04
-            BASEIMAGE: "quay.io/pypa/manylinux_2_28_x86_64@sha256:5487186451f5b39d9bfcfd056e1e3f6e9b79e7817528900c0f0a21d311e497ed"
+            BASEIMAGE: "quay.io/pypa/manylinux_2_28_x86_64@sha256:e0b40ace8e818e96026eb47714b01998cbca022a6995797d0905474ce3e82ae8"
             PYTHON_VERSION: "3.14"
     runs-on: ${{ matrix.runs-on }}
     steps:
