@@ -7,8 +7,8 @@ source "$(dirname -- "${BASH_SOURCE[0]}")/_utils.sh"
 LIBGPG_ERROR_URL=https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.61.tar.gz
 LIBGPG_ERROR_SHA256=7980d7d43178b06a74bfba3d4606c13955bf2370344e12938d56ae4a9da6d36f
 
-LIBGCRYPT_URL=https://gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.11.2.tar.gz
-LIBGCRYPT_SHA256=56f6eb6871a5431e6700fdf70962c76eac0aa4bc6bceab68da4907e3fcb929e0
+LIBGCRYPT_URL=https://gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.12.2.tar.gz
+LIBGCRYPT_SHA256=d7ee3b90330ab71c39ffea4274a356089d375f716f9893ef5ecabc73d3e1551d
 
 ZSYNC2_URL=https://github.com/AppImageCommunity/zsync2/archive/f855a8b4d7c2533b62e0c967da59e21bffd44ac3.tar.gz
 ZSYNC2_SHA256=2c70a23f2919c4f75bfe6c7a17b24c8895b7fdfff7163b915153284ef746f76f
