@@ -10,8 +10,8 @@ LIBGPG_ERROR_SHA256=7980d7d43178b06a74bfba3d4606c13955bf2370344e12938d56ae4a9da6
 LIBGCRYPT_URL=https://gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.12.2.tar.gz
 LIBGCRYPT_SHA256=d7ee3b90330ab71c39ffea4274a356089d375f716f9893ef5ecabc73d3e1551d
 
-ZSYNC2_URL=https://github.com/AppImageCommunity/zsync2/archive/f855a8b4d7c2533b62e0c967da59e21bffd44ac3.tar.gz
-ZSYNC2_SHA256=2c70a23f2919c4f75bfe6c7a17b24c8895b7fdfff7163b915153284ef746f76f
+ZSYNC2_URL=https://github.com/AppImageCommunity/zsync2/archive/fc62ae7851ef28dc390a57fbdbe90b0afc5e3102.tar.gz
+ZSYNC2_SHA256=b7271d59cad94fbbd02614fa1d88ae4633a04ee91c98364f1e2f8f809f104037
 
 
 build_libgpg-error() {
