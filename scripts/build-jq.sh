@@ -123,9 +123,9 @@ xmltodict==1.0.4 \
     --hash=sha256:6d94c9f834dd9e44514162799d344d815a3a4faec913717a9ecbfa5be1bb8e61 \
     --hash=sha256:a4a00d300b0e1c59fc2bfccb53d7b2e88c32f200df138a0dd2229f842497026a
     # via yq
-yq==4.1.2 \
-    --hash=sha256:25252ae6cc2dba71c26b262fe7f3cb2ed04ffda908556bb602c9e40e9c975c4d \
-    --hash=sha256:a8f148930f8beb3170f451d67f29cbe0b3ac713cd2fc91ecf51d43b4879e6b4c
+yq==4.4.0 \
+    --hash=sha256:a80c2df2988d33e72433c7b72f337190bd8c2a1d1cb4ba2aeb45e766f27d837c \
+    --hash=sha256:bac64df0332bebf05cd6ff2bbd35e421a79bfe29d7c57ee021033a12cd8202cd
     # via -r dev/stdin
 EOF
 
