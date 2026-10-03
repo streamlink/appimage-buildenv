@@ -5,7 +5,7 @@ source "$(dirname -- "${BASH_SOURCE[0]}")/_utils.sh"
 
 
 JQ_REPO=https://github.com/jqlang/jq.git
-JQ_REVISION=fb59f1491058d58bdc3e8dd28f1773d1ac690a1f
+JQ_REVISION=f13c1effbf7322e42afcc999d7e3d1509d3f38c9
 
 
 build_jq() {
